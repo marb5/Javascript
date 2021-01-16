@@ -15,3 +15,25 @@ alert("Suma wynosi: " + sum);
 
 var quotient = divide(20, 5);
 alert("Iloraz wynosi: " + quotient);
+
+//anonymous function
+/*
+var f = function () { 
+  alert("test");
+};
+
+f();
+*/
+
+function test(f, y)
+{
+    f(y*2);
+}
+
+test(
+  //anonymous function
+  function(x){
+   alert("test " + x);
+  },
+  17
+);
