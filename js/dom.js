@@ -43,3 +43,14 @@ x.setAttribute("class", "myColor");
 var y = document.querySelector("#list li:nth-child(3)");
 
 alert(y.innerHTML);
+
+var z = document.querySelectorAll("#list li");
+
+for (var i = 0; i < z.length; i++) {
+  if (i === 0)
+    continue;
+  else if (i === 1)
+    z[i].style.color = "blue";
+  else
+    continue;
+}
