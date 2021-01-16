@@ -37,3 +37,7 @@ while (i < languages.length) {
 for (var i = 1; i < 5; i++) {
   document.getElementById("languages").innerHTML += i + "<br>";
 }
+
+for (var element in languages) {
+  alert(languages[element]);
+}
