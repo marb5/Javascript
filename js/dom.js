@@ -54,3 +54,34 @@ for (var i = 0; i < z.length; i++) {
   else
     continue;
 }
+
+/*
+    dodawanie i usuwanie elementów znajdujących się na stronie
+
+    createElement("nazwa_tagu");
+
+    appendChild
+
+    removeChild
+
+    tmp.parentNode.removeChild(tmp);
+   
+ */
+
+var addEle = document.createElement("p");
+
+addEle.style.color = "blue";
+addEle.className = "test_class";
+addEle.innerHTML = "<p id='test1'>Tekst<p>";
+
+var body = document.querySelector("body");
+
+var newChildNode = body.appendChild(addEle);
+
+var test1 = document.getElementById("test1");
+
+test1.style.color = "red";
+
+var test = document.getElementById("test");
+
+test.parentNode.removeChild(test);
