@@ -32,56 +32,57 @@
 
  */
 
-var x = document.getElementById("list");
-var tmp = x.childNodes[1].parentNode.getAttribute("id");
+  var x = document.getElementById("list");
+  var tmp = x.childNodes[1].parentNode.getAttribute("id");
 
-alert(tmp);
+  alert(tmp);
 
-x.setAttribute("class", "myColor");
-//x.removeAttribute("class");
+  x.setAttribute("class", "myColor");
+  //x.removeAttribute("class");
 
-var y = document.querySelector("#list li:nth-child(3)");
+  var y = document.querySelector("#list li:nth-child(3)");
 
-alert(y.innerHTML);
+  alert(y.innerHTML);
 
-var z = document.querySelectorAll("#list li");
+  var z = document.querySelectorAll("#list li");
 
-for (var i = 0; i < z.length; i++) {
-  if (i === 0)
-    continue;
-  else if (i === 1)
-    z[i].style.color = "blue";
-  else
-    continue;
-}
+  for (var i = 0; i < z.length; i++) {
+    if (i === 0)
+      continue;
+    else if (i === 1)
+      z[i].style.color = "blue";
+    else
+      continue;
+  }
 
-/*
-    dodawanie i usuwanie elementów znajdujących się na stronie
+  /*
+      dodawanie i usuwanie elementów znajdujących się na stronie
+  
+      createElement("nazwa_tagu");
+  
+      appendChild
+  
+      removeChild
+  
+      tmp.parentNode.removeChild(tmp);
+     
+   */
 
-    createElement("nazwa_tagu");
+  var addEle = document.createElement("p");
 
-    appendChild
+  addEle.style.color = "blue";
+  addEle.className = "test_class";
+  addEle.innerHTML = "<p id='test1'>Tekst<p>";
 
-    removeChild
+  var body = document.querySelector("body");
 
-    tmp.parentNode.removeChild(tmp);
-   
- */
+  var newChildNode = body.appendChild(addEle);
 
-var addEle = document.createElement("p");
+  var test1 = document.getElementById("test1");
 
-addEle.style.color = "blue";
-addEle.className = "test_class";
-addEle.innerHTML = "<p id='test1'>Tekst<p>";
+  test1.style.color = "red";
 
-var body = document.querySelector("body");
+  var test = document.getElementById("test");
 
-var newChildNode = body.appendChild(addEle);
+  test.parentNode.removeChild(test);
 
-var test1 = document.getElementById("test1");
-
-test1.style.color = "red";
-
-var test = document.getElementById("test");
-
-test.parentNode.removeChild(test);

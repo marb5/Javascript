@@ -11,8 +11,11 @@ function changeColor2() {
   this.removeAttribute("class");
 }
 
-var testEvent = document.getElementById("testEvent");
+//code is executed after site is loaded, async in script source link in html is not necessary
+window.onload = function () {
+  var testEvent = document.getElementById("testEvent");
 
-testEvent.onmouseover = changeColor;
-testEvent.onmouseout = changeColor2;
-testEvent.onclick = writeClicked;
+  testEvent.onmouseover = changeColor;
+  testEvent.onmouseout = changeColor2;
+  testEvent.onclick = writeClicked;
+};

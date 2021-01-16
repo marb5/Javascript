@@ -20,24 +20,24 @@ person["surname"] = "Kowalski";
 alert(person.firstname);
 
 
-var x = document.getElementsByTagName("li");
+  var x = document.getElementsByTagName("li");
 
-alert(x[1].innerHTML);
+  alert(x[1].innerHTML);
 
 
-var idLang = document.getElementById("languages");
-var i = 0;
+  var idLang = document.getElementById("languages");
+  var i = 0;
 
-while (i < languages.length) {
-  idLang.innerHTML += languages[i] + "<br>";
+  while (i < languages.length) {
+    idLang.innerHTML += languages[i] + "<br>";
 
-  i++;
-}
+    i++;
+  }
 
-for (var i = 1; i < 5; i++) {
-  document.getElementById("languages").innerHTML += i + "<br>";
-}
+  for (var i = 1; i < 5; i++) {
+    document.getElementById("languages").innerHTML += i + "<br>";
+  }
 
-for (var element in languages) {
-  alert(languages[element]);
-}
+  for (var element in languages) {
+    alert(languages[element]);
+  }
