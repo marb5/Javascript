@@ -1,4 +1,4 @@
-alert("test");
+//alert("test");
 
 /* variables
   * x = 5
