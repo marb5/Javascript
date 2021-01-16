@@ -18,6 +18,20 @@
                        
  */
 
+/*
+    getElementById()
+    getElementsByTagName()
+
+    słabiej wspierane:
+    getElementsByClassName() - brak wsparcia w ie6,7,8
+    getElementsByName() - brak wsparcia w ie6,7,8,9
+   
+    brak wsparcia w ie 6 i 7 i połowiczne w ie8:
+    querySelector() - wybranie pierwszego napotkanego elementu spełniającego warunek
+    querySelectorAll() - wybieranie wszystkich elementów spełniających warunek
+
+ */
+
 var x = document.getElementById("list");
 var tmp = x.childNodes[1].parentNode.getAttribute("id");
 
@@ -25,3 +39,7 @@ alert(tmp);
 
 x.setAttribute("class", "myColor");
 //x.removeAttribute("class");
+
+var y = document.querySelector("#list li:nth-child(3)");
+
+alert(y.innerHTML);
