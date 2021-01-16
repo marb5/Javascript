@@ -33,3 +33,7 @@ while (i < languages.length) {
 
   i++;
 }
+
+for (var i = 1; i < 5; i++) {
+  document.getElementById("languages").innerHTML += i + "<br>";
+}
