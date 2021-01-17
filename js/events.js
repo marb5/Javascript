@@ -39,10 +39,10 @@ function newEvent(event, str) {
   tmp.innerHTML = e.clientX + ' ' + srcElement.tagName;
 
   var toolTip = document.getElementById("tooltip");
-  tooltip.style.display = "block";
+  toolTip.style.display = "block";
 
-  tooltip.style.left = e.clientX + 15 + "px";
-  tooltip.style.top = e.clientY + 15 + "px";
+  toolTip.style.left = e.clientX + 15 + "px";
+  toolTip.style.top = e.clientY + 15 + "px";
 }
 
 //code is executed after site is loaded, async in script source link in html is not necessary
