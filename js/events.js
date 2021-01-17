@@ -23,6 +23,27 @@ function increaseFont() {
   var fontSize = parseInt(window.getComputedStyle(this).fontSize);
   this.style.fontSize = (++fontSize) + "px";
 }
+function newEvent(event, str) {
+  var e;
+  e = event || window.event; //for older browsers ( 0 || 1 , 1 || 1 )
+  var srcElement = e.target ? e.target : e.srcElement;
+  /*
+  if (event === undefined)
+    e = window.event;
+  else
+    e = event;
+  */
+
+  var tmp = document.getElementById("tmp");
+  //tmp.innerHTML = e.ctrlKey; //e.button, e.keyCode
+  tmp.innerHTML = e.clientX + ' ' + srcElement.tagName;
+
+  var toolTip = document.getElementById("tooltip");
+  tooltip.style.display = "block";
+
+  tooltip.style.left = e.clientX + 15 + "px";
+  tooltip.style.top = e.clientY + 15 + "px";
+}
 
 //code is executed after site is loaded, async in script source link in html is not necessary
 window.onload = function () {
@@ -45,4 +66,10 @@ window.onload = function () {
   stopEvent.addEventListener("click", function () {
     testEvent.removeEventListener("mouseover", increaseFont)
   })
+
+  var moveEvent = document.getElementById("moveEvent");
+
+  moveEvent.onmousemove = function (event) {
+    newEvent(event, this.tagName);
+  };
 };

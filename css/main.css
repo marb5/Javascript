@@ -264,3 +264,11 @@ textarea {
 .myColor {
     color: orangered;
 }
+
+#tooltip {
+    display: none;
+    background-color: deepskyblue;
+    position: absolute;
+    width: 90px;
+    height: 20px;
+}
