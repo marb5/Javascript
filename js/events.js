@@ -59,7 +59,7 @@ function movingImage(e, obj) {
   obj.style.top = e.clientY - obj.height / 2 + "px";
 }
 
-//stoper
+//stoper using setTimeout
 function stopWatch(stoperHandle, time) {
   stoperHandle.innerHTML = time--;
 
@@ -71,7 +71,7 @@ function stopWatch(stoperHandle, time) {
   }, 1000);
   return timeOutStoper;
 }
-
+//stoper using setInterval
 function stopWatchInterval(stoperHandle, time) {
   var timeIntervalRef = setInterval(function () {
     if (--time < 0) {
@@ -83,6 +83,37 @@ function stopWatchInterval(stoperHandle, time) {
   }, 1000);
 
   return timeIntervalRef;
+}
+
+//stoper as class
+function Stoper(stoperHandle) {
+  this.stoperHandle = stoperHandle;
+  this.startValue;
+  this.timeOutRef = undefined;
+  this.run = function (startValue) {
+    this.startValue = startValue;
+    if (this.timeOutRef)
+      this.stop();
+    this.start();
+  };
+  this.start = function () {
+    if (this.startValue < 0)
+      return;
+
+    this.stoperHandle.innerHTML = this.startValue--;
+
+    var self = this;
+
+    this.timeOutRef = setTimeout(function () {
+      self.start();
+    }, 1000);
+  };
+  this.stop = function () {
+    clearTimeout(this.timeOutRef);
+  };
+  this.continue = function () {
+    this.start();
+  };
 }
 
 //variable used to check if stoper is already running
@@ -207,8 +238,23 @@ window.onload = function () {
 
   var startStoper = document.getElementById("startStoper");
   var stopStoper = document.getElementById("stopStoper");
+  var continueStoper = document.getElementById("continueStoper");
   var stoperHandle = document.getElementById("stoperHandle");
 
+  var stoper = new Stoper(stoperHandle);
+
+  startStoper.onclick = function () {
+    var startValue = document.getElementById("startValue").value;
+    stoper.run(startValue);
+  };
+  stopStoper.onclick = function () {
+    stoper.stop();
+  };
+  continueStoper.onclick = function () {
+    stoper.continue();
+  };
+
+  /*
   //check if interval stoper is running
   var timeIntervalRef;
 
@@ -226,7 +272,7 @@ window.onload = function () {
   stopStoper.onclick = function () {
     clearInterval(timeIntervalRef);
   };
-
+  */
   /*
   startStoper.onclick = function () {
     var startValue = document.getElementById("startValue").value;
