@@ -6,7 +6,6 @@ function createEvent(obj, eventName, functionToInvoke) {
     obj.attachEvent("on" + eventName, functionToInvoke);
 }
 
-
 function writeText(text) {
   alert(text + "!");
 }
@@ -44,7 +43,7 @@ function newEvent(event, str) {
   toolTip.style.left = e.clientX + 15 + "px";
   toolTip.style.top = e.clientY + 15 + "px";
 }
-
+//function which shows how work propagation
 function propEvent(event, obj) {
   var e = event || window.event;
   var srcElement = e.target || e.srcElement;
@@ -56,6 +55,7 @@ function propEvent(event, obj) {
 
 //code is executed after site is loaded, async in script source link in html is not necessary
 window.onload = function () {
+  //events on texts
   var testEvent = document.getElementById("testEvent");
   var stopEvent = document.getElementById("stopIncreasingFont");
   /*
@@ -82,6 +82,7 @@ window.onload = function () {
     newEvent(event, this.tagName);
   };
 
+  //propagation
   var testEvent2 = document.getElementById("testEvent2");
   var bolded1 = document.getElementById("bolded1");
   var button1 = document.getElementById("button1");
@@ -102,5 +103,32 @@ window.onload = function () {
 
     alert("button");
     event.stopPropagation();
-  };    
+  };
+
+  var email = document.getElementById("email");
+  var submitFormButton = document.querySelector("#newsletter input[type='submit']");
+
+  submitFormButton.onclick = function (e) {
+    var e = e || window.event;
+    //it prevent default action event in browsers
+    if (e.preventDefault)
+      e.preventDefault();
+    else
+      e.returnValue = false;
+    var tmp = document.getElementById("tmp3");
+
+    tmp.innerHTML = email.value;
+
+    if (email.value === 'jankowalski@zxcvb.com')
+      this.parentNode.submit();
+  };
+
+  //prevents showing context menu while right mouse click on submit
+  submitFormButton.oncontextmenu = function (e) {
+    var e = e || window.event;
+    if (e.preventDefault)
+      e.preventDefault();
+    else
+      e.returnValue = false;
+  };
 };
