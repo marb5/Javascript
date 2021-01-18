@@ -85,7 +85,7 @@ function stopWatchInterval(stoperHandle, time) {
   return timeIntervalRef;
 }
 
-//stoper as class
+//stoper as object
 function Stoper(stoperHandle) {
   this.stoperHandle = stoperHandle;
   this.startValue;
