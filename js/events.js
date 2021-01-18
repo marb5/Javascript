@@ -53,6 +53,28 @@ function propEvent(event, obj) {
   tmp.innerHTML = "źródło eventu: " + srcElement.tagName + "<br>event przypisany do tagu: " + obj.tagName;
 }
 
+//moving image on mouse down
+function movingImage(e, obj) {
+  obj.style.left = e.clientX - obj.width / 2 + "px";
+  obj.style.top = e.clientY - obj.height / 2 + "px";
+}
+
+//stoper
+function stopWatch(stoperHandle, time) {
+  stoperHandle.innerHTML = time--;
+
+  if (time < 0)
+    return;
+
+  timeOutStoper = setTimeout(function () { //after 1 sec execute function
+    stopWatch(stoperHandle, time);
+  }, 1000);
+  return timeOutStoper;
+}
+
+//variable used to check if stoper is already running
+var timeOutStoper;
+
 //code is executed after site is loaded, async in script source link in html is not necessary
 window.onload = function () {
   //events on texts
@@ -153,12 +175,6 @@ window.onload = function () {
     window.scrollBy(0, -1 * window.pageYOffset); //move to 0 x and up by y value
   };
 
-  //moving image on mouse down
-  function movingImage(e, obj) {
-    obj.style.left = e.clientX - obj.width / 2 + "px";
-    obj.style.top = e.clientY - obj.height / 2 + "px";
-  }
-
   var compass = document.getElementById("compass");
 
   compass.onmousedown = function () {
@@ -176,18 +192,6 @@ window.onload = function () {
     e.preventDefault();
   };
 
-  //stoper
-  function stopWatch(stoperHandle, time) {
-    stoperHandle.innerHTML = time--;
-
-    if (time < 0)
-      return;
-
-    setTimeout(function () { //after 1 sec execute function
-      stopWatch(stoperHandle, time);
-    }, 1000);
-  }
-
   var startStoper = document.getElementById("startStoper");
   var stopStoper = document.getElementById("stopStoper");
   var stoperHandle = document.getElementById("stoperHandle");
@@ -195,9 +199,15 @@ window.onload = function () {
   startStoper.onclick = function () {
     var startValue = document.getElementById("startValue").value;
 
+    //clear old stoper when we want to change time period
+    if (timeOutStoper)
+      clearTimeout(timeOutStoper);
+
     stoperHandle.innerHTML = startValue;
-    setTimeout(function () { //after 1 sec execute function
-      stopWatch(stoperHandle, startValue);
-    }, 1000);
+    stopWatch(stoperHandle, startValue);
   };
+
+  stopStoper.onclick = function () {
+    clearTimeout(timeOutStoper);
+  }
 };
