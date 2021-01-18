@@ -305,3 +305,7 @@ textarea {
 {
     color: red;
 }
+
+#compass {
+  position: absolute;
+}

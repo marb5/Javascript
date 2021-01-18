@@ -152,4 +152,27 @@ window.onload = function () {
   toTopButton.onclick = function () {
     window.scrollBy(0, -1 * window.pageYOffset); //move to 0 x and up by y value
   };
+
+  //moving image on mouse down
+  function movingImage(e, obj) {
+    obj.style.left = e.clientX - obj.width / 2 + "px";
+    obj.style.top = e.clientY - obj.height / 2 + "px";
+  }
+
+  var compass = document.getElementById("compass");
+
+  compass.onmousedown = function () {
+    var self = this;
+    document.onmousemove = function (e) {
+      movingImage(e, self);
+    };
+  };
+
+  compass.onmouseup = function () {
+    document.onmousemove = null;
+  };
+
+  compass.ondragstart = function (e) {
+    e.preventDefault();
+  };
 };
