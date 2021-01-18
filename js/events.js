@@ -175,4 +175,29 @@ window.onload = function () {
   compass.ondragstart = function (e) {
     e.preventDefault();
   };
+
+  //stoper
+  function stopWatch(stoperHandle, time) {
+    stoperHandle.innerHTML = time--;
+
+    if (time < 0)
+      return;
+
+    setTimeout(function () { //after 1 sec execute function
+      stopWatch(stoperHandle, time);
+    }, 1000);
+  }
+
+  var startStoper = document.getElementById("startStoper");
+  var stopStoper = document.getElementById("stopStoper");
+  var stoperHandle = document.getElementById("stoperHandle");
+
+  startStoper.onclick = function () {
+    var startValue = document.getElementById("startValue").value;
+
+    stoperHandle.innerHTML = startValue;
+    setTimeout(function () { //after 1 sec execute function
+      stopWatch(stoperHandle, startValue);
+    }, 1000);
+  };
 };
