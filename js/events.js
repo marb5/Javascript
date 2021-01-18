@@ -72,6 +72,19 @@ function stopWatch(stoperHandle, time) {
   return timeOutStoper;
 }
 
+function stopWatchInterval(stoperHandle, time) {
+  var timeIntervalRef = setInterval(function () {
+    if (--time < 0) {
+      clearInterval(timeIntervalRef);
+      return;
+    }
+
+    stoperHandle.innerHTML = time;
+  }, 1000);
+
+  return timeIntervalRef;
+}
+
 //variable used to check if stoper is already running
 var timeOutStoper;
 
@@ -196,6 +209,25 @@ window.onload = function () {
   var stopStoper = document.getElementById("stopStoper");
   var stoperHandle = document.getElementById("stoperHandle");
 
+  //check if interval stoper is running
+  var timeIntervalRef;
+
+  startStoper.onclick = function () {
+    var startValue = document.getElementById("startValue").value;
+    stoperHandle.innerHTML = startValue;
+
+    //clear old stoper when we want to change time period
+    if (timeIntervalRef)
+      clearTimeout(timeIntervalRef);
+
+    timeIntervalRef = stopWatchInterval(stoperHandle, startValue);
+  };
+
+  stopStoper.onclick = function () {
+    clearInterval(timeIntervalRef);
+  };
+
+  /*
   startStoper.onclick = function () {
     var startValue = document.getElementById("startValue").value;
 
@@ -210,4 +242,5 @@ window.onload = function () {
   stopStoper.onclick = function () {
     clearTimeout(timeOutStoper);
   }
+  */
 };
