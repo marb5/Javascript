@@ -287,3 +287,21 @@ textarea {
 #button1 {
   background-color: green;
 }
+
+#toTopButton
+{
+    background-color: blue;
+    color: white;
+    width: 50px;
+    height: 35px;
+    padding: 10px;
+    position: fixed;
+    bottom: 25px;
+    right: 15px;
+    cursor: pointer;
+    display: none;
+}
+#toTopButton:hover
+{
+    color: red;
+}

@@ -131,4 +131,25 @@ window.onload = function () {
     else
       e.returnValue = false;
   };
+
+  //show to top button while scrolling
+  var toTopButton = document.getElementById("toTopButton");
+
+  window.onscroll = function () {
+    var test = document.getElementById("testSpan");
+    var toTopButton = document.getElementById("toTopButton");
+
+    var yScrollAxis = window.pageYOffset;
+
+    if (yScrollAxis > 300)
+      toTopButton.style.display = "block";
+    else
+      toTopButton.style.display = "none";
+
+    test.innerHTML = yScrollAxis;
+  };
+  //move on top of website when clicked
+  toTopButton.onclick = function () {
+    window.scrollBy(0, -1 * window.pageYOffset); //move to 0 x and up by y value
+  };
 };
