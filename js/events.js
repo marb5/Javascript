@@ -45,6 +45,15 @@ function newEvent(event, str) {
   toolTip.style.top = e.clientY + 15 + "px";
 }
 
+function propEvent(event, obj) {
+  var e = event || window.event;
+  var srcElement = e.target || e.srcElement;
+
+  var tmp = document.getElementById("tmp2");
+
+  tmp.innerHTML = "źródło eventu: " + srcElement.tagName + "<br>event przypisany do tagu: " + obj.tagName;
+}
+
 //code is executed after site is loaded, async in script source link in html is not necessary
 window.onload = function () {
   var testEvent = document.getElementById("testEvent");
@@ -72,4 +81,26 @@ window.onload = function () {
   moveEvent.onmousemove = function (event) {
     newEvent(event, this.tagName);
   };
+
+  var testEvent2 = document.getElementById("testEvent2");
+  var bolded1 = document.getElementById("bolded1");
+  var button1 = document.getElementById("button1");
+
+  testEvent2.onclick = function (event) {
+    alert("testEvent2");
+    propEvent(event, this);
+  };
+  bolded1.onclick = function (event) {
+    alert("bolded");
+  };
+  button1.onclick = function (event) {
+    var e = event || window.event;
+    if (e.stopPropagation)
+      e.stopPropagation();
+    else
+      e.cancelBubble = true;
+
+    alert("button");
+    event.stopPropagation();
+  };    
 };

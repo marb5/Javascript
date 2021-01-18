@@ -272,3 +272,18 @@ textarea {
     width: 90px;
     height: 20px;
 }
+#testEvent2 {
+  background-color: red;
+  height: 50px;
+  width: 300px;
+}
+
+#bolded1 {
+  background-color: yellow;
+  height: 50px;
+  width: 150px;
+}
+
+#button1 {
+  background-color: green;
+}
