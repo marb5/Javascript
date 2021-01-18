@@ -289,4 +289,30 @@ window.onload = function () {
     clearTimeout(timeOutStoper);
   }
   */
+
+  //gallery
+  var mainImage = document.getElementById("mainImage"); //our main image
+  var image = new Image(); //image we want to add to main image
+  image.style.width = "350px";
+  image.style.height = "233px";
+
+  mainImage.appendChild(image); //adding image to main image
+
+  var thumbnails = document.getElementsByClassName("thumbnail"); //our mini images
+
+  var currentThumbnail = thumbnails[0]; //get first thumbnail
+  image.src = currentThumbnail.getAttribute("src"); //it is picture we want to enlarge
+
+  //checking which image is preferred to show
+  for (var i = 0; i < thumbnails.length; i++) {
+    thumbnails[i].onmouseover = function () {
+      currentThumbnail.className = currentThumbnail.className.replace("current", ""); //previous picture is not wanted to show
+      currentThumbnail = this;
+      currentThumbnail.className += " current"; //this is current chosen picture
+
+      image.src = this.getAttribute("src"); //show this image
+      image.style.width = "350px";
+      image.style.height = "233px";
+    };
+  }
 };

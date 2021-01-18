@@ -311,3 +311,21 @@ textarea {
   top: 100px;
   right: 100px;
 }
+
+.thumbnail {
+  width: 100px;
+}
+
+.thumbnail:hover {
+  border: 4px solid green;
+  margin: -4px;
+}
+
+#mainImage {
+  margin: 15px;
+} 
+
+.current {
+  border: 4px solid green;
+  margin: -4px;
+}
